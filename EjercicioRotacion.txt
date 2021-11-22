@@ -1,0 +1,43 @@
+< canvas  id = ' canvas ' width = 650  height = 650 >
+    < guión >
+        función  centroGeom ( coordenada ) 
+{
+            tr  =  [ 0 ,  0 ]
+
+            // ....
+
+            return  tr ;
+        }
+
+        función  polígono ( a ,  colorBorde ,  colorRelleno ) 
+{
+            ctx . beginPath ( )
+            ctx . strokeStyle  =  colorBorde
+            ctx . fillStyle  =  colorRelleno
+            ctx . moveTo ( a [ 0 ] ,  a [ 1 ] )
+            para  ( var  i  =  2 ;  i  <  a . longitud ;  i  + =  2 )
+                ctx . lineTo ( a [ i ] ,  a [ i  +  1 ] ) ;
+            ctx . closePath ( )
+            ctx . trazo ( )
+            ctx . llenar ( )
+        }
+
+        var  lienzo  =  documento . getElementById ( "lienzo" ) ;
+        var  ctx  =  lienzo . getContext ( "2d" ) ;
+    
+        var  coord  =  [ 40 , 40 , 107 , 40 , 139 , 181 , 90 , 181 , 91 , 134 , 49 , 134 , 53 , 185 , 9 , 186 ] ; 
+var  tria_a = [ 50 , 105 , 70 , 64 , 91 , 102 ] ;
+
+
+        polígono ( coord ,  'púrpura' ,  'rojo' ) ;
+
+        vt  =  centroGeom ( coord ) ;     // calcular el vecor de traslacion [x, y]
+        ctx . traducir ( - vt [ 0 ] ,  - vt [ 1 ] ) ;    // ubicacion centro de la figura en el origen de coordenadas
+
+        ctx . rotate ( - 4 / 48 * Math . PI )   //ctx.rotate(75);
+
+        ctx . traducir ( vt [ 0 ] ,  vt [ 1 ] ) ;     // retorno de la figura al punto inicial
+
+        polígono ( coord ,  'rojo' ,  'azul' ) ;
+
+    </ script >
